@@ -5,11 +5,10 @@
 
 void runQueries(std::ifstream & infile)
 {
-    // infile是一个ifstream, 指向我们要处理的文件
-	TextQuery tq(infile); // 保存文件并建立查询map
+	TextQuery tq(infile);
 	while(true)
 	{
-		std::cout << "enter word to look for, or q to quit: " << std::endl;
+		std::cout << "enter word to look for, or q to quit: ";
 		std::string s;
 		if(!(std::cin >> s) || s == "q")
 			break;
@@ -19,7 +18,7 @@ void runQueries(std::ifstream & infile)
 
 int main()
 {
-	std::ifstream ifs("1.txt");
+	std::ifstream ifs("C:\\Users\\jz\\Desktop\\1.txt");
 	runQueries(ifs);
 	
 	return 0;	 
