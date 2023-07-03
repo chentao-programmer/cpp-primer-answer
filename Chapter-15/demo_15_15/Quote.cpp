@@ -14,7 +14,7 @@ double print_total(std::ostream &os, const Quote &item, std::size_t n)
 
 double Bulk_quote::net_price(std::size_t cnt) const
 {
-    if (cnt >= min_qty) {
+    if (cnt >= quantity) {
         return cnt * (1 - discount) * price;
     }
     else {
@@ -22,12 +22,14 @@ double Bulk_quote::net_price(std::size_t cnt) const
     }
 }
 
-double Spec_quote::net_price(std::size_t cnt) const
+std::ostream & Quote::debug(std::ostream &os) const
 {
-    if (cnt > max_qty) {
-        return (cnt - max_qty) * price + max_qty * (1 - discount) * price;
-    }
-    else {
-        return cnt * (1 - discount) * price;
-    }
+    os << bookNo << " " << price;
+    return os;
+}
+
+std::ostream & Disc_quote::debug(std::ostream &os) const
+{
+    (*this).Quote::debug(os) << " " << quantity << " " << discount;
+    return os;
 }
